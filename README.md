@@ -1,6 +1,19 @@
 # Cluster
 
-`Cluster` is a Swift library that provides a type for grouping an element and its associated values in an efficient and flexible way. The primary element of a cluster is stored separately from its associated secondary elements, making it easy to access the primary value without iterating through the entire cluster.
+`Cluster` is a Swift library that provides a type for grouping an element and its associated values in an efficient and flexible way. The primary element of a cluster is stored separately from its associated secondary elements, making it easy to access the primary value without iterating through the entire cluster. 
+
+Think of it as being a subversion of the `Zip2Sequence` but where `Seqence1` is an always available variable of same value type as `Seqence2`. 
+
+
+```swift
+open class Cluster<Element> {
+    
+    public var primary: Element
+    public var secondaries: [Element]
+    
+}
+```
+
 
 Installation
 ------------
