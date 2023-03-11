@@ -33,11 +33,11 @@ public extension Array {
 }
 
 // MARK: Equatable
-public extension Cluster {
+extension Cluster: Equatable where Element: Equatable {
     
-    static func == (lhs: Cluster<Element>, rhs: Cluster<Element>) -> Bool where Element: Equatable {
+    public static func == (lhs: Cluster<Element>, rhs: Cluster<Element>) -> Bool  {
         if lhs.primary == rhs.primary && lhs.secondaries.count == rhs.secondaries.count {
-            return lhs.secondaries.allSatisfyOfSameIndex(in: rhs.secondaries, {$0 == $1})
+            return !zip(lhs.secondaries, rhs.secondaries).contains(where: {!($0 == $1)})
         }
         return false
     }

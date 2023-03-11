@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ArrayEnhancer
 
 open class Cluster<Element> {
     
