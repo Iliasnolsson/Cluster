@@ -9,7 +9,6 @@ Installation
 
 To install `Cluster` using the Swift Package Manager, add the following line to your `Package.swift` file:
 
-swift
 
 ```swift
 dependencies: [
@@ -30,7 +29,6 @@ Here are some examples of how to use `Cluster`.
 
 To create a cluster, you can use one of the provided initializers. For example, to create a cluster with a primary element and no secondary elements:
 
-swift
 
 ```swift
 let cluster = Cluster("A")
@@ -38,7 +36,6 @@ let cluster = Cluster("A")
 
 To create a cluster with a primary element and an array of secondary elements:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
@@ -46,7 +43,6 @@ let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
 
 To create a cluster from an array of elements:
 
-swift
 
 ```swift
 let array = ["A", "B", "C"]
@@ -57,7 +53,6 @@ let cluster = Cluster(array: array)
 
 To access the primary element of a cluster:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
@@ -66,7 +61,6 @@ let primary = cluster.primary // "A"
 
 To access the secondary elements of a cluster:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
@@ -75,7 +69,6 @@ let secondaries = cluster.secondaries // ["B", "C"]
 
 To access all elements of a cluster:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
@@ -86,7 +79,6 @@ let array = cluster.array() // ["A", "B", "C"]
 
 To map the elements of a cluster using a closure:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World"])
@@ -95,7 +87,6 @@ let mapped = cluster.map({ $0.count }) // Cluster<Int>(primary: 5, secondaries: 
 
 To map the elements of a cluster using another cluster and a closure:
 
-swift
 
 ```swift
 let cluster1 = Cluster(primary: 2, secondaries: [4, 6, 8])
@@ -105,7 +96,6 @@ let mapped = try cluster1.map(with: cluster2, { $0 * $1 }) // Cluster<Int>(prima
 
 To compact map the elements of a cluster using a closure:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World", ""])
@@ -117,7 +107,6 @@ let compactMapped = try cluster.compactMap({ $0.isEmpty ? nil : $0.count }) // C
 
 To check if all elements of a cluster satisfy a given condition:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World"])
@@ -126,7 +115,6 @@ let allSatisfy = cluster.allSatisfy({ $0 is String }) // true
 
 To check if all secondary elements of a cluster have the same value as the primary element for a given property:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["Hello", "Hello"])
@@ -141,7 +129,6 @@ Sure, sorry about that! Here's the complete `Testing Elements` section:
 
 To check if all elements of a cluster satisfy a given condition:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World"])
@@ -150,7 +137,6 @@ let allSatisfy = cluster.allSatisfy({ $0 is String }) // true
 
 To check if all secondary elements of a cluster have the same value as the primary element for a given property:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["Hello", "Hello"])
@@ -161,7 +147,6 @@ let allEquals = cluster.allEqualsSameValue({ $0.count }) // true
 
 To find the minimum element of a cluster:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World", ""])
@@ -170,7 +155,6 @@ let minElement = try cluster.min(by: { $0.count < $1.count }) // ""
 
 To find the maximum element of a cluster:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "Hello", secondaries: ["World", ""])
@@ -181,7 +165,6 @@ let maxElement = try cluster.max(by: { $0.count < $1.count }) // "Hello"
 
 `Cluster` also conforms to the `Codable` protocol, making it easy to encode and decode instances of the type using `JSONEncoder` and `JSONDecoder`. For example:
 
-swift
 
 ```swift
 let cluster = Cluster(primary: "A", secondaries: ["B", "C"])
