@@ -9,8 +9,8 @@ import Foundation
 
 open class Cluster<Element> {
     
-    public let primary: Element
-    public let secondaries: [Element]
+    public var primary: Element
+    public var secondaries: [Element]
     
     public init(primary: Element, secondaries: [Element]) {
         self.primary = primary
