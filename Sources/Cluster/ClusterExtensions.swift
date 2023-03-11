@@ -63,16 +63,25 @@ public extension Cluster {
                      secondaries: try secondaries.map(expression))
     }
     
+    /// Returns a new cluster whose elements are the non-nil results of
+    /// calling the given transformation with each element of this cluster.
+    ///
+    /// Will return a nil cluster if the "primary" of the cluster is nil after passing it through the expression
+    ///
+    /// - Parameter expression: A closure that takes an element of the cluster
+    ///   as its argument and returns an optional value.
+    /// - Returns: A cluster of the non-nil results of calling the given
+    ///   transformation with each element of this cluster.
+    /// - Throws: An error propagated from the transformation closure.
     func compactMap<ElementOfResult>(_ expression: ((Element) throws -> ElementOfResult?)) rethrows -> Cluster<ElementOfResult>? {
         if let primaryMapped = try expression(primary) {
             let secondariesMapped = try secondaries.compactMap(expression)
-            if secondariesMapped.count == secondaries.count {
-                return .init(primary: primaryMapped,
-                             secondaries: secondariesMapped)
-            }
+            return .init(primary: primaryMapped,
+                         secondaries: secondariesMapped)
         }
         return nil
     }
+
     
 }
 
