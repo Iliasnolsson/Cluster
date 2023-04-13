@@ -136,8 +136,6 @@ let allEquals
 
 > You stopped typing at the title "Testing Elements" in the readme. Can you continue
 
-Sure, sorry about that! Here's the complete `Testing Elements` section:
-
 ### Testing Elements
 
 To check if all elements of a cluster satisfy a given condition:
